@@ -35,7 +35,7 @@ namespace DevIO.Api.Controllers
             return BadRequest(new
             {
                 success = false,
-                errors = _notificador.ObterNotificacoes().Select(n => n.Mensagem)
+                erros = _notificador.ObterNotificacoes().Select(n => n.Mensagem)
             });
         }
 
