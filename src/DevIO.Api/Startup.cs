@@ -20,10 +20,12 @@ namespace DevIO.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MeuDbContext>(options => 
+            services.AddDbContext<MeuDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddIdentityConfiguration(Configuration);
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -43,6 +45,7 @@ namespace DevIO.Api
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
             app.UseMvcConfiguration();
         }
     }
